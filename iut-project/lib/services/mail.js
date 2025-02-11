@@ -9,6 +9,8 @@ const nodemailer = require('nodemailer');
 
 module.exports = class MailService extends Service {
 
+  // Inititaliser les paramètres nécessaires pour l'envoie de mails
+
   async initialisation() {
 
     const transporter = nodemailer.createTransport({
@@ -16,13 +18,15 @@ module.exports = class MailService extends Service {
       host: process.env.MAIL_HOST,
       port: process.env.MAIL_PORT,
       auth: {
-        user: process.env.MAIL_USER,  // Le nom d'utilisateur de ton serveur de mail
-        pass: process.env.MAIL_PASS,  // Le mot de passe de ton serveur de mail
+        user: process.env.MAIL_USER,  
+        pass: process.env.MAIL_PASS, 
       },
     });
 
     this.transporter = transporter;
   }
+
+  // Envoyer un mail à un utilisateur donné en paramètre via le module nodemailer
 
   async sendWelcomeMessage(userName, toEmail){
     try {
