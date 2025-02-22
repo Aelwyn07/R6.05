@@ -1,7 +1,9 @@
 'use strict';
 
+require('@hapipal/schmervice');
 const HauteCouture = require('@hapipal/haute-couture');
 const Package = require('../package.json');
+
 
 exports.plugin = {
     pkg: Package,

@@ -13,7 +13,7 @@ module.exports = [
             payload: Joi.object({
                 firstName: Joi.string().required().min(3).example('John').description('Firstname of the user'),
                 lastName: Joi.string().required().min(3).example('Doe').description('Lastname of the user'),
-                email: Joi.string().required().email().example('john@doe.fr').description('Email of the user'),
+                email: Joi.string().required().email().example('mathis.krizmanic@gmail.com').description('Email of the user'),
                 password: Joi.string().required().example('password').description('Password of the user'),
                 username: Joi.string().required().example('johndoe').description('Username of the user')
             })
@@ -22,7 +22,7 @@ module.exports = [
         handler: async (request, h) => {
 
             const { userService } = request.services();
-
+               
             return await userService.create(request.payload);
         }
     },

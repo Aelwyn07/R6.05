@@ -13,6 +13,11 @@ module.exports = class UserService extends Service {
         const newUser = await User.query().insertAndFetch(user);
 
         const mailService = this.server.services().mailService;
+        
+        if (!mailService.transporter) {
+            await mailService.initialisation();
+        }
+        
         await mailService.sendWelcomeMessage(newUser.firstName, newUser.email);
 
         return newUser;

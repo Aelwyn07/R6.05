@@ -1,4 +1,4 @@
-'use strict';
+
 
 const { Service } = require('@hapipal/schmervice');
 const Boom = require('@hapi/boom');
@@ -13,10 +13,11 @@ module.exports = class MailService extends Service {
 
   async initialisation() {
 
-    const transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
       service: 'smtp',
       host: process.env.MAIL_HOST,
       port: process.env.MAIL_PORT,
+      secure: false,
       auth: {
         user: process.env.MAIL_USER,  
         pass: process.env.MAIL_PASS, 
@@ -29,6 +30,7 @@ module.exports = class MailService extends Service {
   // Envoyer un mail à un utilisateur donné en paramètre via le module nodemailer
 
   async sendWelcomeMessage(userName, toEmail){
+
     try {
       const mailOptions = {
         from: process.env.MAIL_FROM_USER,
@@ -38,10 +40,13 @@ module.exports = class MailService extends Service {
       };
 
       const sendMail = await this.transporter.sendMail(mailOptions);
-
+      console.log("C'est envoyé !");
       return sendMail;
 
     } catch (error) {
+      
+      console.log("L'envoie ne fonctionne pas");
+      
       throw Boom.internal('Erreur lors de la tentative d envoie du mail');
     }
   }
