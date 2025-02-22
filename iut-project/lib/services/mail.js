@@ -36,7 +36,7 @@ module.exports = class MailService extends Service {
         from: process.env.MAIL_FROM_USER,
         to: toEmail,
         subject: 'Bienvenue à vous ici !',
-        text: `${userName}, Bienvenue à vous. Nosu espérons que vous passerez un bon moment à nos côtés !`,
+        text: `${userName}, Bienvenue à vous. Nous espérons que vous passerez de bons moments à nos côtés !`,
       };
 
       const sendMail = await this.transporter.sendMail(mailOptions);
