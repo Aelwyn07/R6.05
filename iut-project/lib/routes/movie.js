@@ -24,16 +24,18 @@ module.exports = [
         }
     },
     {
-        method: 'get',              //Récupérer tous les films
+        method: 'get',              // Récupérer tous les films
         path: '/movies',
-        options: { tags: ['api'] },
+        options: { 
+            tags: ['api']
+        },
         handler: async (request, h) => {
             const { movieService } = request.services();
             return await movieService.getMovies();
         }
     },
     {
-        method: 'get',              //Récupérer un film par id
+        method: 'get',              // Récupérer un film par id
         path: '/movies/{id}',
         options: {
             tags: ['api'],

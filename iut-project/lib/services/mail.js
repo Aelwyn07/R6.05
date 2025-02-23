@@ -27,7 +27,7 @@ module.exports = class MailService extends Service {
     this.transporter = transporter;
   }
 
-  // Envoyer un mail à un utilisateur donné en paramètre via le module nodemailer
+  // Envoyer un mail à un utilisateur donné en paramètre (via le module nodemailer)
 
   async sendWelcomeMessage(userName, toEmail){
 

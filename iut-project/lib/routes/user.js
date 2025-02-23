@@ -22,7 +22,9 @@ module.exports = [
         handler: async (request, h) => {
 
             const { userService } = request.services();
-               
+            
+            const newUser = { ...request.payload, roles: ['user'] };
+            
             return await userService.create(request.payload);
         }
     },

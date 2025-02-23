@@ -28,7 +28,7 @@ class MovieService {
         if (!updatedRows) {
             throw new Error(`Impossible de modifier, pas de film trouvé avec l'id ${id}`);
         }
-        return Movie.query().findById(id); // Retourner le film mis à jour
+        return Movie.query().findById(id);      // Retourner le film mis à jour
     }
 
     static async deleteMovie(id) {
