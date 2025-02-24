@@ -71,7 +71,7 @@ Vous pourrez alors vous rendre sur :
 
 Note : l'installation de Node.js, Git, Docker, MySQL ainsi que Npm est recquise. 
 
-Note 2 : la base de donénes tourne sur le port 3333 ici.
+Note 2 : la base de données tourne sur le port 3333 ici.
 
 Note 3 : Pour accéder à la base de données depuis le terminal, une fois Docker lancé : 
 
