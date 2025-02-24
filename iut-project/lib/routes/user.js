@@ -106,5 +106,27 @@ module.exports = [
 
             return await userService.login(request.payload.email, request.payload.password);
         }
+    }, 
+    {
+        method: 'put',              // MAJ vers admin
+        path: '/user/{id}/role',
+        options: {
+            tags: ['api'],
+            auth: {
+                scope: ['admin']
+            },
+            validate: {
+                params: Joi.object({
+                    id: Joi.number().integer().required().min(1)
+                }),
+                payload: Joi.object({
+                    roles: Joi.array().items(Joi.string().valid('admin', 'user')).min(1)
+                })
+            }
+        },
+        handler: async (request, h) => {
+            const { userService } = request.services();
+            return await userService.update(request.params.id, {roles: request.payload.roles });
+        }
     }
 ];

@@ -50,4 +50,38 @@ module.exports = class MailService extends Service {
       throw Boom.internal('Erreur lors de la tentative d envoie du mail');
     }
   }
+
+  async sendNewMovieNotification(toEmail, movieTitle) {
+    try {
+        const mailOptions = {
+            from: process.env.MAIL_FROM_USER,
+            to: toEmail,
+            subject: 'Ajout d un nouveau film',
+            text: `Nouveau film ajouté : "${movieTitle}". A regarder rapidement !`,
+        };
+        await this.transporter.sendMail(mailOptions);
+
+    } catch (error) {
+        console.log("L'envoi du mail de notification ne marche pas");
+
+        throw Boom.internal('Erreur lors de l envoi du mail de nouveau film');
+    }
+  }
+
+  async sendMovieUpdatedNotification(toEmail, movieTitle) {
+    try {
+        const mailOptions = {
+            from: process.env.MAIL_FROM_USER,
+            to: toEmail,
+            subject: 'MAJ d un film favoris',
+            text: `Le film "${movieTitle}" a été mis à jour !!`,
+        };
+
+        await this.transporter.sendMail(mailOptions);
+
+    } catch (error) {
+        console.log("Erreur lors de l'envoi du mail de mise à jour");
+        throw Boom.internal('Erreur lors de l envoi du mail de maj');
+    }
+  }
 }
