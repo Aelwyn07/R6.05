@@ -16,7 +16,7 @@ Récupérer le projet
 https://github.com/Aelwyn07/R6.05.git
 ```
 
-Installation des dépendances (à effectuer à la racine du projet
+Installation des dépendances (à effectuer à la racine du projet)
 
 ```
 npm i
@@ -34,7 +34,7 @@ Lancement du conteneur Docker :
 docker run -d --name hapi-mysql -e MYSQL_ROOT_PASSWORD=hapi -e MYSQL_DATABASE=user -p 3307:3306 mysql:8.0 --default-authentication-plugin=mysql_native_password
 ```
 
-Dans le fichier .env (à la racine du projet), définir les variables globales) : 
+Dans le fichier .env (à la racine du projet), définir les variables globales : 
 
 ```
 MAIL_HOST='smtp.ethereal.email'
